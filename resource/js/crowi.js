@@ -332,7 +332,7 @@ $(function() {
 
     if (name == '') {
       $('#newPageNameCheck').addClass('alert-danger');
-      $('#newPageNameCheck').html('ページ名を入力してください。');      
+      $('#newPageNameCheck').html('ページ名を入力してください。');
     }
     else {
       $.get('/_api/pages.isCreatable', {path: prefix + name}, function(res) {
