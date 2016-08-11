@@ -322,6 +322,33 @@ $(function() {
     return false;
   });
 
+  $('#createPage').on('shown.bs.modal', function (e) {
+    $('#pageName').focus();
+  });
+  $('#createPageForm').submit(function(e)
+  {
+    var prefix = $('[name=pageNamePrefix]', this).val();
+    var name = $('[name=pageName]', this).val();
+
+    if (name == '') {
+      $('#newPageNameCheck').addClass('alert-danger');
+      $('#newPageNameCheck').html('ページ名を入力してください。');
+    }
+    else {
+      $.get('/_api/pages.isCreatable', {path: prefix + name}, function(res) {
+        if (!res.ok) {
+          $('#newPageNameCheck').addClass('alert-danger');
+          $('#newPageNameCheck').html(res.error);
+        } else {
+          $('#newPageNameCheck').removeClass('alert-danger');
+          top.location.href = prefix + name;
+        }
+      });
+    }
+
+    return false;
+  });
+
   // rename
   $('#renamePage').on('shown.bs.modal', function (e) {
     $('#newPageName').focus();
