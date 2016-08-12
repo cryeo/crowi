@@ -4,7 +4,7 @@
 
 var hljs = require('highlight.js');
 var jsdiff = require('diff');
-var marked = require('marked');
+var marked = require('extendedMarked');
 var io = require('socket.io-client');
 
 //require('bootstrap-sass');
@@ -176,12 +176,15 @@ Crowi.rendererType.markdown.prototype = {
     contentHtml = this.link(contentHtml);
 
     var $body = this.$revisionBody;
+
     // Using async version of marked
     marked(contentHtml, {}, function (err, content) {
       if (err) {
         throw err;
       }
       $body.html(content);
+
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, $body[0]]);
     });
   },
   preFormatMarkdown: function(content){
