@@ -352,6 +352,18 @@ $(function() {
       extraParams: {
         path: location.pathname
       },
+      allowedTypes: [
+        'image/jpeg',
+        'image/png',
+        'image/jpg',
+        'image/gif',
+        'application/msword',  // *.doc
+        'application/vnd.ms-excel',  // *.xls
+        'application/vnd.ms-powerpoint',  // *.ppt
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',  // *.docx
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',  // *.xlsx
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation'  // *.pptx
+      ],
       progressText: '(Uploading file...)',
       urlText: "\n![file]({filename})\n"
     };
