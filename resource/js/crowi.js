@@ -681,7 +681,11 @@ $(function() {
       if (attachments.length > 0) {
         $.each(attachments, function(i, file) {
           $pageAttachmentList.append(
-          '<li><a href="' + file.fileUrl + '">' + (file.originalName || file.fileName) + '</a> <span class="label label-default">' + file.fileFormat + '</span></li>'
+          '<li>',
+          '<a href="' + file.fileUrl + '">' + (file.originalName || file.fileName) + '</a>',
+          ' <span class="label label-default">' + file.fileFormat + '</span>',
+          ' <span><i class="fa fa-trash"></i></span>',
+          '</li>'
           );
         })
       } else {
